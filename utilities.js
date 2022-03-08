@@ -1,6 +1,7 @@
 function $(id) { return document.getElementById(id); }
 
 const Util = {
+    perlin: tooloud.Perlin.create(Math.floor(Math.random() * 100)),
     map: (num, inLo, inHi, outLo, outHi) => {
         const inScale = (num - inLo) / (inHi - inLo);
         const outScale = outHi - outLo;
@@ -21,7 +22,7 @@ function randomWeights(num) {
     let arr = [];
     arr.push(0);
     for (let i = 0; i < num - 1; i++) {
-        let rand = int(noise(i / num) * 10000);
+        let rand = Math.round(Util.perlin.noise(i / num) * 10000);
         arr.push(rand);
     }
 

@@ -23,52 +23,44 @@ function setup() {
     c.fillStyle = 'rgb(255, 255, 255)';
     c.fillRect(0, 0, S.width, S.height);
 
-    // init();
+    init();
 }
 setup();
-// function draw(){
 
-// }
+function init() {
+    // projectSeed = Math.round(Math.random() *100000);
+    // randomSeed(projectSeed);
 
-// function init() {
-//     projectSeed = int(random(100000));
-//     randomSeed(projectSeed);
+    // set total frame count to know when to restart
+    // totalFrameCount = (width * height * 5) / PPL;
 
-//     // set total frame count to know when to restart
-//     totalFrameCount = (width * height * 5) / PPL;
+    // initialize x and y in random bipolar grid
+    x = Util.random(-1, 1);
+    y = Util.random(-1, 1);
 
-//     // reset background
-//     background(255);
-
-//     // initialize x and y in random bipolar grid
-//     x = random(-1, 1);
-//     y = random(-1, 1);
-
-//     // pick and IFS to start and end
-//     startIFS = random(IFSs);
-//     endIFS = random(IFSs);
+    // pick and IFS to start and end
+    startIFS = Util.random(IFSs);
+    endIFS = Util.random(IFSs);
 
 
-//     // sets weighting for variation functions
-//     variationFuncWeights = randomWeights(variationFunctions.length);
+    // sets weighting for variation functions
+    variationFuncWeights = randomWeights(variationFunctions.length);
 
-//     // shuffle weighting array for better randomness
-//     shuffledVariations = shuffle(variationFunctions);
+    // shuffle weighting array for better randomness
+    shuffledVariations = shuffle(variationFunctions);
 
-//     // pick a final variation function
-//     finalVariation = random(finalVariationFunctions);
+    // pick a final variation function
+    finalVariation = random(finalVariationFunctions);
 
-//     // pick and randomize palette
-//     let url = random(urls);
-//     palette = createPalette(url);
-//     palette = shuffle(palette);
+    // // pick and randomize palette
+    // let url = Util.random(urls);
+    // palette = createPalette(url);
+    // palette = shuffle(palette);
 
-//     // for debugging
-//     console.log(`Initial IFS: ${startIFS.name}, \nFinal IFS: ${finalVariation.name}, \nFinal Variation: ${endIFS.name}`);
+    // for debugging
+    console.log(`Initial IFS: ${startIFS.name}, \nFinal IFS: ${finalVariation.name}, \nFinal Variation: ${endIFS.name}`);
+}
 
-//     //set background color to white
-//     imgReset(img);
-// }
 // function draw() {
 //     img.loadPixels();
 //     for (let i = 0; i < PPL; i++) {
