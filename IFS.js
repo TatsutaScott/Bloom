@@ -24,8 +24,8 @@ function boxFractal(x, y) {
         { a: 1 / 3, b: 0, c: 0, d: 1 / 3, e: 2 / 3, f: 2 / 3, p: 4 / 4 },
     ];
 
-    x = map(x, -1, 1, 0, 1);
-    y = map(y, -1, 1, 0, 1);
+    x = Util.map(x, -1, 1, 0, 1);
+    y = Util.map(y, -1, 1, 0, 1);
 
     let f = funcs[Math.floor(Math.random() * funcs.length)];//random(funcs);
     let p = f.p;

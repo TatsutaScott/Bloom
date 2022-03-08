@@ -1,5 +1,13 @@
 const Util = {
-
+    map: (num, inLo, inHi, outLo, outHi) => {
+        const inScale = (num - inLo) / (inHi - inLo);
+        const outScale = outHi - outLo;
+        return (inScale * outScale) + outLo;
+    },
+    random: (low, hi) => {
+        const range = hi - low;
+        return (Math.random() * range) + low;
+    },
 }
 function randomWeights(num) {
     let arr = [];
