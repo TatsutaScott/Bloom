@@ -1,6 +1,7 @@
 const canvas = $('canvas');
 const c = canvas.getContext('2d');
 
+//this object holds all of the settings for our fractal
 const S = {
     width: 800,
     height: 800,
@@ -13,6 +14,7 @@ const S = {
     seed: 0
 }
 
+//this object holds all of the global variables that get regularly updated
 const G = {
     x: 0,
     y: 0,
@@ -20,7 +22,8 @@ const G = {
     yOut: 0,
     f: null,
     p1: 0,
-    p2: 0
+    p2: 0,
+    stroke: null
 }
 
 // let startIFS, endIFS, weights, shuffledVariations, finalTransformation, palette, projectSeed;
@@ -38,17 +41,14 @@ function setup() {
     init();
 }
 setup();
-for (let i = 0; i < 100; i++) {
-    draw();
+setInterval(() => {
+    for (let i = 0; i < 100; i++) {
+        draw();
 
-}
+    }
+})
+
 function init() {
-    // projectSeed = Math.round(Math.random() *100000);
-    // randomSeed(projectSeed);
-
-    // set total frame count to know when to restart
-    // totalFrameCount = (width * height * 5) / PPL;
-
     // initialize x and y in random bipolar grid
     G.x = Util.random(-1, 1);
     G.y = Util.random(-1, 1);
@@ -66,13 +66,12 @@ function init() {
     // pick a final variation function
     S.finalVariation = Util.random(finalVariationFunctions);
 
-    // // pick and randomize palette
-    // let url = Util.random(urls);
-    // palette = createPalette(url);
-    // palette = shuffle(palette);
+    // pick and randomize palette
+    S.palette = new Palette(Util.random(Palette.urls));
+    console.log(S.palette);
 
     // for debugging
-    // console.log(`Initial IFS: ${startIFS.name}, \nFinal IFS: ${finalVariation.name}, \nFinal Variation: ${endIFS.name}`);
+    console.log(`Initial IFS: ${S.startIFS.name}, \nFinal IFS: ${S.finalVariation.name}, \nFinal Variation: ${S.endIFS.name}`);
 }
 
 function draw() {
@@ -82,13 +81,13 @@ function draw() {
     let currentVariation = S.shuffledVariations[randomFuncIndex];
 
     // starting IFS function
-    [G.x, G.y, G.f, p1] = S.startIFS(G.x, G.y);
+    [G.x, G.y, G.f, G.p1] = S.startIFS(G.x, G.y);
 
     // weighted random variation function
     [G.x, G.y] = currentVariation(G.x, G.y, G.f);
 
     // starting IFS function
-    [G.x, G.y, G.f, p2] = S.endIFS(G.x, G.y);
+    [G.x, G.y, G.f, G.p2] = S.endIFS(G.x, G.y);
 
     // final transformation function
     [G.x, G.y] = S.finalVariation(G.x, G.y, G.f);
@@ -97,11 +96,11 @@ function draw() {
     G.xOut = Util.map(G.x, -1.5, 1.5, 0, S.width);
     G.yOut = Util.map(G.y, -1.5, 1.5, 0, S.height);
 
-    // color point
-    // let colorInterpolation = ((randomFuncIndex / (variationFuncWeights.length - 1)) + p1 + p2) / 3
-    // c = coolerp(palette, colorInterpolation);
-    // stroke(c);
-    c.strokeStyle = 'black';
+    //color point
+    let colorInterpolation = ((randomFuncIndex / (S.variationFuncWeights.length - 1)) + G.p1 + G.p2) / 3
 
-    c.strokeRect(G.xOut, G.yOut, 10, 10);
+    G.stroke = S.palette.paletteInterpolate(colorInterpolation);
+    // stroke(c);
+    c.strokeStyle = G.stroke;
+    c.strokeRect(G.xOut, G.yOut, 0.0001, 0.0001);
 }

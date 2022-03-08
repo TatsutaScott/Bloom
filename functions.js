@@ -249,8 +249,8 @@ function blob(x, y) {
 function PDJ(x, y) {
     let { a, b, c, d } = pdjParams;
     let output = [
-        sin(a * y) - cos(b * x),
-        sin(c * x) - cos(d * y)
+        Math.sin(a * y) - Math.cos(b * x),
+        Math.sin(c * x) - Math.cos(d * y)
     ];
 
     return output;
@@ -364,7 +364,7 @@ function gaussian() {
         k += Math.random();
     }
     k -= 2;
-    let rand = random();
+    let rand = Math.random();
     let output = [
         k * Math.cos(2 * Math.PI * rand),
         k * Math.sin(2 * Math.PI * rand),
