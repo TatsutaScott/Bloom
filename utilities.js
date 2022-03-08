@@ -17,6 +17,18 @@ const Util = {
             return a[Math.floor(Math.random() * a.length)];
         }
     },
+    shuffle: (arr) => {
+        let rnd, tmp, idx = arr.length;
+        while (idx > 1) {
+            rnd = (Util.random(0, 1) * idx) | 0;
+
+            tmp = arr[--idx];
+            arr[idx] = arr[rnd];
+            arr[rnd] = tmp;
+        }
+
+        return arr;
+    }
 }
 function randomWeights(num) {
     let arr = [];

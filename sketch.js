@@ -47,10 +47,10 @@ function init() {
     variationFuncWeights = randomWeights(variationFunctions.length);
 
     // shuffle weighting array for better randomness
-    shuffledVariations = shuffle(variationFunctions);
+    shuffledVariations = Util.shuffle(variationFunctions);
 
     // pick a final variation function
-    finalVariation = random(finalVariationFunctions);
+    finalVariation = Util.random(finalVariationFunctions);
 
     // // pick and randomize palette
     // let url = Util.random(urls);
