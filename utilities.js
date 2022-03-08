@@ -30,6 +30,7 @@ const Util = {
         return arr;
     }
 }
+
 function randomWeights(num) {
     let arr = [];
     arr.push(0);
@@ -43,7 +44,7 @@ function randomWeights(num) {
 }
 
 function probPick(arr) {
-    let num = int(random(10000));
+    let num = Math.round(Math.random() * 10000);
     for (let i = 0; i < arr.length; i++) {
         if (num < arr[i]) {
             return i - 1;

@@ -94,7 +94,7 @@ const IFSs = [
             { a: -0.15, b: 0.28, c: 0.26, d: 0.24, e: 0, f: 0.44, p: 3 / 3 },
         ];
 
-        const r = random();
+        const r = Math.random();
         let f;
 
         if (r < 0.01) {

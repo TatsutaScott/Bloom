@@ -224,7 +224,7 @@ function rings(x, y, func) {
 function fan(x, y, func) {
     let f = func.f;
     let c = func.c;
-    let t = Math.PI * pow(c, 2);
+    let t = Math.PI * Math.pow(c, 2);
     let r = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     let theta = Math.atan2(y, x);
     if (modn(theta + f, t) > t / 2) {
@@ -240,8 +240,8 @@ function blob(x, y) {
     let theta = Math.atan(x / y);
     let b = l + (((h - l) / 2) * (Math.sin(w * theta) + 1));
     let output = [
-        r * b * cos(theta),
-        r * b * sin(theta)
+        r * b * Math.cos(theta),
+        r * b * Math.sin(theta)
     ];
     return output;
 }
@@ -267,13 +267,13 @@ function fan2(x, y) {
 
     if (t > p1 / 2) {
         output = [
-            r * sin(theta - (p1 / 2)),
-            r * cos(theta - (p1 / 2))
+            r * Math.sin(theta - (p1 / 2)),
+            r * Math.cos(theta - (p1 / 2))
         ];
     } else {
         output = [
-            r * sin(theta + (p1 / 2)),
-            r * cos(theta + (p1 / 2))
+            r * Math.sin(theta + (p1 / 2)),
+            r * Math.cos(theta + (p1 / 2))
         ];
     }
 
@@ -286,8 +286,8 @@ function rings2(x, y) {
     let r = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     let t = r - (2 * p * Math.floor((r + p) / (2 * p))) + (r * (1 - p));
     let output = [
-        t * sin(theta),
-        t * cos(theta)
+        t * Math.sin(theta),
+        t * Math.cos(theta)
     ];
     return output;
 }
