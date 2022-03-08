@@ -1,3 +1,6 @@
+const Util = {
+
+}
 function randomWeights(num) {
     let arr = [];
     arr.push(0);
