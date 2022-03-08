@@ -3,8 +3,8 @@ const c = canvas.getContext('2d');
 
 //this object holds all of the settings for our fractal
 const S = {
-    width: 8000,
-    height: 8000,
+    width: 800,
+    height: 800,
     startIFS: null,
     endIFS: null,
     weights: null,
@@ -100,7 +100,7 @@ function draw() {
     let colorInterpolation = ((randomFuncIndex / (S.variationFuncWeights.length - 1)) + G.p1 + G.p2) / 3
 
     G.stroke = S.palette.paletteInterpolate(colorInterpolation);
-    // stroke(c);
     c.strokeStyle = G.stroke;
-    c.strokeRect(G.xOut, G.yOut, 1, 1);
+
+    c.strokeRect(G.xOut, G.yOut, 0.001, 0.001);
 }

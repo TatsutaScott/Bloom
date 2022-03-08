@@ -1,4 +1,4 @@
-html, body {
+/* html, body {
     margin: 0;
     padding: 0;
     background-color: rgb(172, 172, 172);
@@ -15,4 +15,80 @@ body{
 
 canvas {
     display: block;
+} */
+
+
+#ui{
+    background-color: bisque;
+    border: 1px dashed black ;
+    border-radius: 15px;
+    width: 400px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+}
+
+#uiBody{
+    padding: 0.5em;
+}
+
+.setting{
+    margin-bottom: 0.25em;
+    display: grid;
+    align-items: center;
+}
+.slider{
+    background-color: darkgray;
+    
+    grid-template-columns: 3fr 1fr 5fr;
+}
+.select{
+    background-color: darkgray;
+    grid-template-columns: repeat(3, 1fr);
+}
+.numbox{
+    background-color: darkgray;
+    grid-template-columns: 1fr 2fr;
+}
+#uiHeader{
+    border-radius: inherit;
+    background-color: aquamarine;
+    padding: 0.5em;
+}
+
+button{
+    background-color: rgba(255,255, 255, 0.5);
+    border:1pt solid rgb(0, 0, 0);
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    padding: 0.3em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 10pt;
+    cursor: pointer;
+}
+
+.range {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 200px; /* Full-width */
+  height: 1px; /* Specified height */
+  background: #000000; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+.range:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 10px; /* Set a specific slider handle width */
+  height: 10px; /* Slider handle height */
+  background: #000000; /* Green background */
+  border-radius: 50%;
+  cursor: pointer; /* Cursor on hover */
 }

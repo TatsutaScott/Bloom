@@ -9,13 +9,55 @@
 </head>
 
 <body>
-    <canvas id="canvas"></canvas>
-    <script src="./tooloud.js"></script>
+    <!-- <canvas id="canvas"></canvas> -->
+    <div id="ui">
+        <div id="uiHeader">
+            <button id="hide">&#10006;</button>
+        </div>
+        <div id="uiBody">
+            <div class=" setting slider">
+                <label for="width">Width</label>
+                <div class="output">800</div>
+                <input type="range" name="width" id="width" class="range">
+            </div>
+            <div class="setting slider">
+                <label for="height">Height</label>
+                <div class="output">800</div>
+                <input type="range" name="height" id="height" class="range">
+            </div>
+            <div class="setting select">
+                <label for="startIFS">Starting IFS</label>
+                <div class="output">koch snowflake</div>
+                <select name="startIFS" id="startIFS"></select>
+            </div>
+            <div class="setting select">
+                <label for="startIFS">End IFS</label>
+                <div class="output">koch snowflake</div>
+                <select name="startIFS" id="startIFS"></select>
+            </div>
+            <div class="setting select">
+                <label for="startIFS">End Transform</label>
+                <div class="output">Cosine</div>
+                <select name="startIFS" id="startIFS"></select>
+            </div>
+            <div class="setting numbox">
+                <label for="startIFS">palette</label>
+                <input type="url" name="palette" id="palette">
+                <div id="paletteColors"></div>
+            </div>
+            <div class="setting numbox">
+                <label for="startIFS">Seed</label>
+                <input type="number" name="seed" id="seed">
+            </div>
+        </div>
+    </div>
+    <!-- <script src="./tooloud.js"></script>
     <script src="./utilities.js"></script>
     <script src="./functions.js"></script>
     <script src="./IFS.js"></script>
     <script src="./colors.js"></script>
     <script src="./sketch.js"></script>
+    <script src="./ui.js"></script> -->
 </body>
 
 </html>
