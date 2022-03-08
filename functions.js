@@ -207,8 +207,8 @@ function power(x, y) {
 
 function cosine(x, y) {
     let output = [
-        cos(Math.PI * x) * Math.cosh(y),
-        -1 * sin(Math.PI * x) * Math.sinh(y),
+        Math.cos(Math.PI * x) * Math.cosh(y),
+        -1 * Math.sin(Math.PI * x) * Math.sinh(y),
     ];
     return output;
 }

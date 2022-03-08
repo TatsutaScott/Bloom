@@ -3,18 +3,30 @@ const c = canvas.getContext('2d');
 
 const S = {
     width: 800,
-    height: 800
+    height: 800,
+    startIFS: null,
+    endIFS: null,
+    weights: null,
+    shuffledVariations: null,
+    finalTransformation: null,
+    palette: null,
+    seed: 0
 }
 
-let x, y, f, p;
-let startIFS, endIFS, weights, shuffledVariations, finalTransformation, palette, projectSeed;
+const G = {
+    x: 0,
+    y: 0,
+    xOut: 0,
+    yOut: 0,
+    f: null,
+    p1: 0,
+    p2: 0
+}
+
+// let startIFS, endIFS, weights, shuffledVariations, finalTransformation, palette, projectSeed;
 let PPL = 10000;// points per loop
 let totalFrameCount;
-let img;
 let frameNum = 0;
-let progressImg = false;
-let imgWidth = 8000;
-let imgHeight = 8000;
 
 function setup() {
     canvas.width = S.width;
@@ -26,7 +38,10 @@ function setup() {
     init();
 }
 setup();
-draw();
+for (let i = 0; i < 100; i++) {
+    draw();
+
+}
 function init() {
     // projectSeed = Math.round(Math.random() *100000);
     // randomSeed(projectSeed);
@@ -35,21 +50,21 @@ function init() {
     // totalFrameCount = (width * height * 5) / PPL;
 
     // initialize x and y in random bipolar grid
-    x = Util.random(-1, 1);
-    y = Util.random(-1, 1);
+    G.x = Util.random(-1, 1);
+    G.y = Util.random(-1, 1);
 
     // pick and IFS to start and end
-    startIFS = Util.random(IFSs);
-    endIFS = Util.random(IFSs);
+    S.startIFS = Util.random(IFSs);
+    S.endIFS = Util.random(IFSs);
 
     // sets weighting for variation functions
-    variationFuncWeights = randomWeights(variationFunctions.length);
+    S.variationFuncWeights = randomWeights(variationFunctions.length);
 
     // shuffle weighting array for better randomness
-    shuffledVariations = Util.shuffle(variationFunctions);
+    S.shuffledVariations = Util.shuffle(variationFunctions);
 
     // pick a final variation function
-    finalVariation = Util.random(finalVariationFunctions);
+    S.finalVariation = Util.random(finalVariationFunctions);
 
     // // pick and randomize palette
     // let url = Util.random(urls);
@@ -57,61 +72,36 @@ function init() {
     // palette = shuffle(palette);
 
     // for debugging
-    console.log(`Initial IFS: ${startIFS.name}, \nFinal IFS: ${finalVariation.name}, \nFinal Variation: ${endIFS.name}`);
+    // console.log(`Initial IFS: ${startIFS.name}, \nFinal IFS: ${finalVariation.name}, \nFinal Variation: ${endIFS.name}`);
 }
 
 function draw() {
     // img.loadPixels();
-    for (let i = 0; i < PPL; i++) {
-        // pick the random variation function for this loop through
-        let randomFuncIndex = probPick(variationFuncWeights);
-        let currentVariation = shuffledVariations[randomFuncIndex];
+    // pick the random variation function for this loop through
+    let randomFuncIndex = probPick(S.variationFuncWeights);
+    let currentVariation = S.shuffledVariations[randomFuncIndex];
 
-        // starting IFS function
-        [x, y, f, p1] = startIFS(x, y);
+    // starting IFS function
+    [G.x, G.y, G.f, p1] = S.startIFS(G.x, G.y);
 
-        // weighted random variation function
-        [x, y] = currentVariation(x, y, f);
+    // weighted random variation function
+    [G.x, G.y] = currentVariation(G.x, G.y, G.f);
 
-        // starting IFS function
-        [x, y, f, p2] = endIFS(x, y);
+    // starting IFS function
+    [G.x, G.y, G.f, p2] = S.endIFS(G.x, G.y);
 
-        // final transformation function
-        [x, y] = finalVariation(x, y, f);
+    // final transformation function
+    [G.x, G.y] = S.finalVariation(G.x, G.y, G.f);
 
-        // map x y to canvas proportions
-        let nx = Util.map(x, -1.5, 1.5, 0, imgWidth);
-        let ny = Util.map(y, -1.5, 1.5, 0, imgHeight);
+    // map x y to canvas proportions
+    G.xOut = Util.map(G.x, -1.5, 1.5, 0, S.width);
+    G.yOut = Util.map(G.y, -1.5, 1.5, 0, S.height);
 
-        // color point
-        // let colorInterpolation = ((randomFuncIndex / (variationFuncWeights.length - 1)) + p1 + p2) / 3
-        // c = coolerp(palette, colorInterpolation);
-        // stroke(c);
+    // color point
+    // let colorInterpolation = ((randomFuncIndex / (variationFuncWeights.length - 1)) + p1 + p2) / 3
+    // c = coolerp(palette, colorInterpolation);
+    // stroke(c);
+    c.strokeStyle = 'black';
 
-        c.strokeRect(this.x, this.y, 0.001, 0.001);
-
-    }
-    // img.updatePixels();
-    // image(img, 0, 0, width, height);
-
-    // if (progressImg) {
-    //     // returns progress report
-    //     if ((frameCount / totalFrameCount) % 0.01 === 0) {
-    //         let progressPercent = (frameCount / totalFrameCount) * 100;
-    //         let fps = frameRate();
-    //         console.log(`Image is ${progressPercent}% done. \nFPS: ${fps}`);
-    //         let name = imgName(projectSeed);
-    //         saveCanvas(`${name}_${frameNum}`, 'png');
-    //         frameNum++;
-    //     }
-    // }
-
-    // if (frameCount % totalFrameCount === 0) {
-    //     // gives name based on date and random seed
-    //     let name = imgName(projectSeed);
-
-    //     //saves file and reinitializes program
-    //     img.save(name, 'png');
-    //     init();
-    // }
+    c.strokeRect(G.xOut, G.yOut, 10, 10);
 }
