@@ -17,20 +17,30 @@ canvas {
     display: block;
 } */
 
+#hide{
+    padding:0.2em 0.5em;
+    text-align: center;
+}
 
 #ui{
     background-color: bisque;
     border: 1px dashed black ;
     border-radius: 15px;
-    width: 400px;
+    width: 500px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 10pt;
+    position:absolute;
+    top: 0; 
+    left: 0;
 }
 
 #uiBody{
     padding: 0.5em;
 }
-
+#paletteColors{
+    display:flex;
+    padding: 0.25em;
+}
 .setting{
     margin-bottom: 0.25em;
     display: grid;
@@ -38,7 +48,6 @@ canvas {
 }
 .slider{
     background-color: darkgray;
-    
     grid-template-columns: 3fr 1fr 5fr;
 }
 .select{
@@ -49,24 +58,33 @@ canvas {
     background-color: darkgray;
     grid-template-columns: 1fr 2fr;
 }
-#uiHeader{
-    border-radius: inherit;
+.buttons{
+    grid-template-columns: repeat(4, 1fr);
+}
+#uiheader{
+    /* border-radius: inherit; */
     background-color: aquamarine;
     padding: 0.5em;
 }
 
 button{
     background-color: rgba(255,255, 255, 0.5);
-    border:1pt solid rgb(0, 0, 0);
+    border:1pt none rgb(0, 0, 0);
     border-radius: 5px;
     color: rgb(0, 0, 0);
-    padding: 0.3em;
+    padding: 0.6em 0.1em;
+    margin: 0.1em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-family: inherit;
     font-size: 10pt;
     cursor: pointer;
+}
+
+
+select{
+    font-family: inherit;
 }
 
 .range {

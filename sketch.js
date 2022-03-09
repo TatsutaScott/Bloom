@@ -1,4 +1,4 @@
-const canvas = $('canvas');
+const canvas = document.getElementById('canvas');
 const c = canvas.getContext('2d');
 
 //this object holds all of the settings for our fractal
