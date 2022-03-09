@@ -1,7 +1,7 @@
-/* html, body {
+html, body {
     margin: 0;
     padding: 0;
-    background-color: rgb(172, 172, 172);
+    /* background-color: rgb(172, 172, 172); */
 }
 
 body{
@@ -10,12 +10,12 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    /* text-align: center; */
 }
 
 canvas {
     display: block;
-} */
+}
 
 #hide{
     padding:0.2em 0.5em;
@@ -23,7 +23,7 @@ canvas {
 }
 
 #ui{
-    background-color: bisque;
+    background-color: rgba(255, 255, 255,0.75);
     border: 1px dashed black ;
     border-radius: 15px;
     width: 500px;
@@ -32,10 +32,14 @@ canvas {
     position:absolute;
     top: 0; 
     left: 0;
+    padding: 0.5em;
+}
+#uiheader{
+    padding-bottom:0.5rem;
 }
 
 #uiBody{
-    padding: 0.5em;
+    padding:inherit
 }
 #paletteColors{
     display:flex;
@@ -47,25 +51,21 @@ canvas {
     align-items: center;
 }
 .slider{
-    background-color: darkgray;
     grid-template-columns: 3fr 1fr 5fr;
 }
 .select{
-    background-color: darkgray;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr;
 }
 .numbox{
-    background-color: darkgray;
     grid-template-columns: 1fr 2fr;
 }
 .buttons{
     grid-template-columns: repeat(4, 1fr);
 }
-#uiheader{
-    /* border-radius: inherit; */
-    background-color: aquamarine;
-    padding: 0.5em;
+.palette{
+    grid-template-columns: 1fr 2fr;
 }
+
 
 button{
     background-color: rgba(255,255, 255, 0.5);
@@ -82,9 +82,11 @@ button{
     cursor: pointer;
 }
 
-
-select{
+input{
     font-family: inherit;
+}
+select{
+    font-family:inherit;
 }
 
 .range {

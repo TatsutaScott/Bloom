@@ -19,37 +19,48 @@
             <div class=" setting slider">
                 <label for="width">Width</label>
                 <div class="output">800</div>
-                <input type="range" name="width" id="width" class="range">
+                <input type="range" min="400" max="8000" value="800" name="width" id="width" step="100" class="range">
             </div>
             <div class="setting slider">
                 <label for="height">Height</label>
                 <div class="output">800</div>
-                <input type="range" name="height" id="height" class="range">
+                <input type="range" min="400" max="8000" value="800" name="height" id="height" class="range">
+            </div>
+            <div class="setting slider">
+                <label for="points">Full render points</label>
+                <div class="output">800</div>
+                <input type="range" name="points" id="points" class="range">
+            </div>
+            <div class="setting slider">
+                <label for="ppf">Points per frame</label>
+                <div class="output">800</div>
+                <input type="range" name="ppf" id="ppf" class="range">
             </div>
             <div class="setting select">
                 <label for="startIFS">Starting IFS</label>
-                <div class="output">koch snowflake</div>
+                <!-- <div class="output">koch snowflake</div> -->
                 <select name="startIFS" id="startIFS"></select>
             </div>
             <div class="setting select">
                 <label for="endIFS">End IFS</label>
-                <div class="output">koch snowflake</div>
+                <!-- <div class="output">koch snowflake</div> -->
                 <select name="endIFS" id="endIFS"></select>
             </div>
             <div class="setting select">
                 <label for="endTransform">End Transform</label>
-                <div class="output">Cosine</div>
+                <!-- <div class="output">Cosine</div> -->
                 <select name="endTransform" id="endTransform"></select>
             </div>
-            <div class="setting select">
-                <label for="startIFS">palette</label>
-                <input type="url" name="palette" id="palette">
-                <div id="paletteColors"></div>
+            <div class="setting palette">
+                <label for="palette">palette</label>
+                <input type="url" name="palette" id="palette" placeholder="coolers url">
             </div>
-            <div class="setting numbox">
-                <label for="startIFS">Seed</label>
+            <div id="paletteColors" style="height: 10px; padding: 0.5rem 0rem;"></div>
+
+            <!-- <div class="setting numbox">
+                <label for="seed">Seed</label>
                 <input type="number" name="seed" id="seed">
-            </div>
+            </div> -->
             <div class="setting buttons">
                 <button id="randomize">Randomize</button>
                 <button id="loopRender">Looping Render</button>

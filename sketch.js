@@ -11,7 +11,10 @@ const S = {
     shuffledVariations: null,
     finalTransformation: null,
     palette: null,
-    seed: 0
+    seed: 0,
+    points: Math.pow(10, 6),
+    ppf: 1000,
+    looping: null
 }
 
 //this object holds all of the global variables that get regularly updated
@@ -37,21 +40,16 @@ function setup() {
 
     c.fillStyle = 'rgb(255, 255, 255)';
     c.fillRect(0, 0, S.width, S.height);
-
-    init();
-}
-setup();
-setInterval(() => {
-    for (let i = 0; i < 1000; i++) {
-        draw();
-
-    }
-})
-
-function init() {
     // initialize x and y in random bipolar grid
     G.x = Util.random(-1, 1);
     G.y = Util.random(-1, 1);
+}
+setup();
+init();
+draw(250000);
+
+
+function init() {
 
     // pick and IFS to start and end
     S.startIFS = Util.random(IFSs);
@@ -68,39 +66,39 @@ function init() {
 
     // pick and randomize palette
     S.palette = new Palette(Util.random(Palette.urls));
-    console.log(S.palette);
 
     // for debugging
     console.log(`Initial IFS: ${S.startIFS.name}, \nFinal IFS: ${S.finalVariation.name}, \nFinal Variation: ${S.endIFS.name}`);
 }
 
-function draw() {
-    // img.loadPixels();
-    // pick the random variation function for this loop through
-    let randomFuncIndex = probPick(S.variationFuncWeights);
-    let currentVariation = S.shuffledVariations[randomFuncIndex];
+function draw(loopNum) {
+    for (let i = 0; i < loopNum; i++) {
+        // pick the random variation function for this loop through
+        let randomFuncIndex = probPick(S.variationFuncWeights);
+        let currentVariation = S.shuffledVariations[randomFuncIndex];
 
-    // starting IFS function
-    [G.x, G.y, G.f, G.p1] = S.startIFS(G.x, G.y);
+        // starting IFS function
+        [G.x, G.y, G.f, G.p1] = S.startIFS(G.x, G.y);
 
-    // weighted random variation function
-    [G.x, G.y] = currentVariation(G.x, G.y, G.f);
+        // weighted random variation function
+        [G.x, G.y] = currentVariation(G.x, G.y, G.f);
 
-    // starting IFS function
-    [G.x, G.y, G.f, G.p2] = S.endIFS(G.x, G.y);
+        // starting IFS function
+        [G.x, G.y, G.f, G.p2] = S.endIFS(G.x, G.y);
 
-    // final transformation function
-    [G.x, G.y] = S.finalVariation(G.x, G.y, G.f);
+        // final transformation function
+        [G.x, G.y] = S.finalVariation(G.x, G.y, G.f);
 
-    // map x y to canvas proportions
-    G.xOut = Util.map(G.x, -1.5, 1.5, 0, S.width);
-    G.yOut = Util.map(G.y, -1.5, 1.5, 0, S.height);
+        // map x y to canvas proportions
+        G.xOut = Util.map(G.x, -1.5, 1.5, 0, S.width);
+        G.yOut = Util.map(G.y, -1.5, 1.5, 0, S.height);
 
-    //color point
-    let colorInterpolation = ((randomFuncIndex / (S.variationFuncWeights.length - 1)) + G.p1 + G.p2) / 3
+        //color point
+        let colorInterpolation = ((randomFuncIndex / (S.variationFuncWeights.length - 1)) + G.p1 + G.p2) / 3
 
-    G.stroke = S.palette.paletteInterpolate(colorInterpolation);
-    c.strokeStyle = G.stroke;
+        G.stroke = S.palette.paletteInterpolate(colorInterpolation);
+        c.strokeStyle = G.stroke;
 
-    c.strokeRect(G.xOut, G.yOut, 0.001, 0.001);
+        c.strokeRect(G.xOut, G.yOut, 0.0001, 0.0001);
+    }
 }
