@@ -1,7 +1,7 @@
 import { addPoint, setDimensions, reset } from "@/js/functions/sketch.js";
-import System from "./classes/system";
-import Point from "./classes/point";
-import Palette from "./classes/palette";
+import System from "@/js/classes/System";
+import Point from "@/js/classes/Point";
+import Palette from "@/js/classes/Palette";
 
 // GLOBAL VARIABLES __________________________________
 let canvas, context, system, point, animLoop;

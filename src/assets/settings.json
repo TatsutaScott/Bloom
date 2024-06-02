@@ -1,0 +1,119 @@
+{
+  "sliders": [
+    {
+      "name": "Width",
+      "val": "width",
+      "lo": 100,
+      "hi": 2000,
+      "step": 100
+    },
+    {
+      "name": "Height",
+      "val": "height",
+      "lo": 100,
+      "hi": 2000,
+      "step": 100
+    },
+    {
+      "name": "Point Size",
+      "val": "pointSize",
+      "lo": 0.1,
+      "hi": 1,
+      "step": 0.001
+    },
+    {
+      "name": "Alpha",
+      "val": "alpha",
+      "lo": 0,
+      "hi": 1,
+      "step": 0.01
+    },
+    {
+      "name": "Points per loop",
+      "v-model": "pointsPerLoop",
+      "lo": 10000,
+      "hi": 100000
+    }
+  ],
+  "selects": [
+    {
+      "name": "Start IFS",
+      "ref": "startIFS",
+      "val": "startIFS",
+      "options": [
+        "boxFractal",
+        "kochSnowflake",
+        "sierpinskiTriangle",
+        "sierpinskiCarpet",
+        "barnsleyFern",
+        "levyDragon",
+        "heighwayDragon",
+        "goldenDragon"
+      ]
+    },
+    {
+      "name": "End IFS",
+      "ref": "endIFS",
+      "val": "endIFS",
+      "options": [
+        "boxFractal",
+        "kochSnowflake",
+        "sierpinskiTriangle",
+        "sierpinskiCarpet",
+        "barnsleyFern",
+        "levyDragon",
+        "heighwayDragon",
+        "goldenDragon"
+      ]
+    },
+    {
+      "name": "End Warp",
+      "ref": "endWarp",
+      "val": "endWarp",
+      "options": [
+        "linear",
+        "sinusoidal",
+        "spherical",
+        "swirl",
+        "horseshoe",
+        "polar",
+        "handkerchief",
+        "heart",
+        "disc",
+        "spiral",
+        "hyperbolic",
+        "diamond",
+        "ex",
+        "julia",
+        "bent",
+        "waves",
+        "fisheye",
+        "popcorn",
+        "exponential",
+        "power",
+        "cosine",
+        "rings",
+        "fan",
+        "blob",
+        "PDJ",
+        "fan2",
+        "rings2",
+        "eyefish",
+        "bubble",
+        "vCylinder",
+        "vPerspective",
+        "juliaN",
+        "juliaScope",
+        "pie",
+        "ngon",
+        "curl",
+        "rectangles",
+        "arch",
+        "tangent",
+        "blade",
+        "twinTrian",
+        "cross"
+      ]
+    }
+  ]
+}

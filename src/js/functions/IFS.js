@@ -1,5 +1,5 @@
-import { map } from "../util/math_util.js";
-import { random } from "../util/random_util.js";
+import { map } from "@/js/util/math_util.js";
+import { random } from "@/js/util/random_util.js";
 
 function runFunc(x, y, func) {
   const px = func.a * x + func.b * y + func.e;

@@ -1,10 +1,10 @@
-import Color from "./Color";
+import Color from "@/js/classes/Color";
 import {
   random,
   generateStochasticMap,
   stochasticMapRandom,
-} from "../util/random_util";
-import { map } from "../util/math_util";
+} from "@/js/util/random_util";
+import { map } from "@/js/util/math_util";
 
 /** A representation of a color Palette */
 export default class Palette {

@@ -1,7 +1,7 @@
-import { random } from "../util/random_util";
+import { random } from "@/js/util/random_util";
+import { IFSArray } from "@/js/functions/IFS";
+import { finalWarpArray } from "@/js/functions/warping";
 import { ref } from "vue";
-import { IFSArray } from "../functions/IFS";
-import { finalWarpArray } from "../functions/warping";
 
 export const control = ref({
   isLooping: true,

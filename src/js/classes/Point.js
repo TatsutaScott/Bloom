@@ -1,6 +1,6 @@
-// import Vec from "./vector";
-import { map } from "../util/math_util";
-import Color from "./Color";
+import Vec from "@/js/classes/Vector";
+import { map } from "@/js/util/math_util";
+import Color from "@/js/classes/Color";
 
 /** a class describing a point */
 export default class Point {

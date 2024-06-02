@@ -2,10 +2,10 @@ import {
   random,
   generateStochasticMap,
   stochasticMapRandom,
-} from "../util/random_util";
-// import Palette from "./palette";
-import { IFSArray } from "../functions/IFS.js";
-import { warpArray, finalWarpArray } from "../functions/warping.js";
+} from "@/js/util/random_util";
+import Palette from "@/js/classes/Palette";
+import { IFSArray } from "@/js/functions/IFS.js";
+import { warpArray, finalWarpArray } from "@/js/functions/warping.js";
 
 /** a class representing a fractal flame system */
 export default class System {
