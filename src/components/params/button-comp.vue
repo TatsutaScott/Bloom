@@ -19,5 +19,6 @@ const props = defineProps({
   padding: 0.125rem 0.25rem;
   font-size: 10pt;
   cursor: pointer;
+  box-sizing: border-box;
 }
 </style>

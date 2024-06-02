@@ -32,7 +32,8 @@
       "name": "Points per loop",
       "v-model": "pointsPerLoop",
       "lo": 10000,
-      "hi": 100000
+      "hi": 100000,
+      "step": 100
     }
   ],
   "selects": [
@@ -114,6 +115,28 @@
         "twinTrian",
         "cross"
       ]
+    }
+  ],
+  "buttons": [
+    {
+      "name": "Download",
+      "emit": "download"
+    },
+    {
+      "name": "Reset",
+      "emit": "reset"
+    },
+    {
+      "name": "Info",
+      "emit": "info"
+    },
+    {
+      "name": "Randomize Warps",
+      "emit": "randomizeWarps"
+    },
+    {
+      "name": "Randomize Palette",
+      "emit": "randomizePalette"
     }
   ]
 }
