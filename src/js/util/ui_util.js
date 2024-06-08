@@ -60,5 +60,6 @@ export function functionNames(arr) {
  * @param {[ref]} params - arrray of refs
  */
 export function paramRandomize(params) {
+  console.log(params);
   params.forEach((p) => p.randomize());
 }

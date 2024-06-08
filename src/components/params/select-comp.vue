@@ -11,7 +11,7 @@
       text="rand"
       class="rand"
       @click="$emit('update:modelValue', random(props.options))"
-    />
+    ></Button>
   </div>
 </template>
 

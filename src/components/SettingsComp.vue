@@ -83,7 +83,11 @@ const emits = defineEmits([
   "info",
 ]);
 
-onMounted(() => dragAndDrop(settings.value));
+onMounted(() => {
+  dragAndDrop(settings.value);
+  console.log(startIFS);
+  console.log(this.$refs);
+});
 </script>
 
 <style lang="scss">
