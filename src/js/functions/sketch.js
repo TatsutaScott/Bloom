@@ -24,6 +24,7 @@ export function addPoint(system, point, context) {
  * @param {*} context - the drawing context of the canvas
  */
 export function reset(context, canvas) {
+  context.clearRect(0, 0, canvas.width, canvas.height);
   context.fillStyle = "white";
   context.fillRect(0, 0, canvas.width, canvas.height);
 }

@@ -4,7 +4,9 @@
       <span @click="showHide = !showHide" id="openClose">{{
         showHide ? "▽" : "△"
       }}</span>
-      <div id="drag" v-if="showHide"></div>
+      <div id="drag" v-if="showHide">
+        <h1>bloom</h1>
+      </div>
     </div>
 
     <div v-if="showHide" id="settingsUI">
@@ -48,6 +50,10 @@
           :text="b.name"
           @click="emits(b.emit)"
         ></Button>
+        <Button
+          :text="control.displayMode ? 'Normal' : 'Display'"
+          @click="() => (control.displayMode = !control.displayMode)"
+        ></Button>
       </div>
 
       <Palette v-if="control.palette" :palette-object="control.palette" />
@@ -85,12 +91,14 @@ const emits = defineEmits([
 
 onMounted(() => {
   dragAndDrop(settings.value);
-  console.log(startIFS);
-  console.log(this.$refs);
 });
 </script>
 
 <style lang="scss">
+h1 {
+  margin: 0;
+  font-size: 2em;
+}
 #settings {
   position: absolute;
   display: flex;
@@ -108,6 +116,7 @@ onMounted(() => {
 #setting_header {
   display: flex;
   flex-direction: row;
+  align-items: center;
   width: 100%;
 }
 #drag {

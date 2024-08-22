@@ -34,6 +34,7 @@ systemWorker.addEventListener("message", (e) => {
 });
 
 watch(() => control.value.isLooping, toggleDrawLoop);
+watch(() => control.value.displayMode, toggleDisplay);
 
 watch(
   () => [control.value.width, control.value.height],
@@ -77,6 +78,14 @@ function toggleDrawLoop(isLooping) {
   }
 }
 
+function toggleDisplay(displayMode) {
+  if (displayMode) {
+    display.value.requestFullscreen();
+    systemWorker.postMessage({ method: "displayOn" });
+  } else {
+    systemWorker.postMessage({ method: "displayOff" });
+  }
+}
 /** utilityFunction to download the image */
 function download() {
   const link = document.createElement("a");

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>bloom</h1>
     <SettingsComponent
       ref="settingsComp"
       @download="canvasComp.download()"
@@ -9,6 +8,7 @@
       @randomizeWarps="canvasComp.randomizeWarps()"
       @randomizePalette="canvasComp.randomizePalette()"
       @info="canvasComp.info()"
+      @display="canvasComp.display()"
     />
     <CanvasComponent ref="canvasComp" />
   </div>

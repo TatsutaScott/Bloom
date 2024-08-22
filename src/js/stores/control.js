@@ -5,6 +5,7 @@ import { ref } from "vue";
 
 export const control = ref({
   isLooping: true,
+  displayMode: false,
   width: 1200,
   height: 1200,
   alpha: 1,

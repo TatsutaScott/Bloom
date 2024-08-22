@@ -98,17 +98,34 @@ System.prototype.setDimensions = function (width, height) {
 };
 
 System.prototype.setStartIFS = function (name) {
-  const newFunction = IFSArray.find((f) => f.name == name);
+  let newFunction;
+  if (name == "random") {
+    newFunction = random(IFSArray);
+  } else {
+    newFunction = IFSArray.find((f) => f.name == name);
+  }
   this.startIFS = newFunction;
 };
 
 System.prototype.setEndIFS = function (name) {
-  const newFunction = IFSArray.find((f) => f.name == name);
+  let newFunction;
+  if (name == "random") {
+    newFunction = random(IFSArray);
+  } else {
+    newFunction = IFSArray.find((f) => f.name == name);
+  }
+
   this.endIFS = newFunction;
 };
 
 System.prototype.setEndWarp = function (name) {
-  const newFunction = finalWarpArray.find((f) => f.name == name);
+  let newFunction;
+  if (name == "random") {
+    newFunction = random(finalWarpArray);
+  } else {
+    newFunction = finalWarpArray.find((f) => f.name == name);
+  }
+
   this.finalWarp = newFunction;
 };
 
