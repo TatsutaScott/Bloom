@@ -73,6 +73,7 @@ import { dragAndDrop, paramRandomize } from "@/js/util/ui_util";
 import { ref, defineEmits, onMounted } from "vue";
 
 console.log(data);
+
 const startIFS = ref();
 const endIFS = ref();
 const endWarp = ref();

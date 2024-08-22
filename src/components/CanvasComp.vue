@@ -9,6 +9,7 @@ import Worker from "@/js/worker?worker";
 import Palette from "@/js/classes/Palette";
 
 const systemWorker = new Worker();
+
 const display = ref();
 
 /** Sends the canvas to the web worker and initializes system */

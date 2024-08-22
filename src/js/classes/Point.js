@@ -25,7 +25,7 @@ export default class Point {
 Point.prototype.print = function () {
   const pos = `position: (${this.position.x}, ${this.position.y})\n`;
   const out = `out: (${this.outPosition.x}, ${this.outPosition.y})\n`;
-  const f = `f: ${this.f} \n`;
+  const f = `f: ${this.currFunction} \n`;
   const p1 = `p1: ${this.p1} \n`;
   const p2 = `p2: ${this.p2} \n`;
   const stroke = `stroke: ${this.stroke.printString()}`;

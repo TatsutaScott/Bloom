@@ -21,6 +21,7 @@ export default class System {
 
 /** Randomly initialize the settings in the system */
 System.prototype.randomInit = function () {
+  console.log(IFSArray);
   this.startIFS = random(IFSArray); // pick an IFS to start the system
   this.endIFS = random(IFSArray); // pick an IFS to end the system
   this.warpFunctions = generateStochasticMap(warpArray); // get the warp functions and give them weightings
