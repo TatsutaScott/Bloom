@@ -13,7 +13,7 @@ npm install
 npm run dev
 ```
 
-A deployed version of the project can also be accessed here:
+A deployed version of the project can also be accessed here: https://in-bloom.vercel.app/
 
 The program can be run in a normal or display mode. The normal mode is primarily used to generate images, but it can be switched into a display mode which will continually generate images at a slightly slower rate, randomizing settings after they fully develop.
 
